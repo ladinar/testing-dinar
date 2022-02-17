@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Str;
+// $databaseurl = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
 return [
 
@@ -32,7 +33,6 @@ return [
     | choice installed on your machine before you begin development.
     |
     */
-
     'connections' => [
 
         'sqlite' => [
@@ -61,6 +61,16 @@ return [
             'options' => extension_loaded('pdo_mysql') ? array_filter([
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],
+        ],
+
+        'clear_mysql' => [
+            'driver' => 'mysql',
+            'url' => getenv("CLEARDB_DATABASE_URL"),
+            'host' => parse_url(getenv("CLEARDB_DATABASE_URL"))['host'],
+            'port' => 3306,
+            'database' => substr(parse_url(getenv("CLEARDB_DATABASE_URL"))['path'], 1),
+            'username' => parse_url(getenv("CLEARDB_DATABASE_URL"))['user'],
+            'password' => parse_url(getenv("CLEARDB_DATABASE_URL"))['pass'],
         ],
 
         'pgsql' => [
