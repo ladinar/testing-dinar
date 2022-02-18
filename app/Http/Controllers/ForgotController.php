@@ -11,6 +11,7 @@ use \Exception;
 use Illuminate\Http\Response;
 use Mail;
 use Hash;
+use App\Mail\ForgotMail;
 
 class ForgotController extends Controller
 {
@@ -32,11 +33,17 @@ class ForgotController extends Controller
                 'token' => $token
             ]);
 
-            Mail::send('Mails.forgot', ['token' => $token], function ($message) use ($email){
-                $message->to($email);
-                $message->subject("ganti password");
-                $message->from("from@example.com");
-            });
+            $username = DB::table('users')->select('username')->where('email',$email)->first()->username;
+
+            // return ['token' => $token];
+
+            Mail::to($email)
+                ->send(new ForgotMail('[Ladinar-App] Forgot Password', $username, $token));
+            // Mail::send('Mails.forgot', ['token' => $token], function ($message) use ($email,$username){
+            //     $message->to($email);
+            //     $message->subject("Forgot Password");
+            //     $message->from("from@example.com");
+            // });
 
             return response([
                 'message' => 'check your email!'
