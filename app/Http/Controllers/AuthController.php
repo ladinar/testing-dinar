@@ -44,6 +44,11 @@ class AuthController extends Controller
         return Auth::user();
     }
 
+    public function AllUser()
+    {
+        return User::get();
+    }
+
     public function register(RegisterRequest $request)
     {
         try {
