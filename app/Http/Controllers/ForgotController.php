@@ -38,6 +38,7 @@ class ForgotController extends Controller
             // return ['token' => $token];
 
             Mail::to($email)
+                ->from('hello@example.com')
                 ->send(new ForgotMail('[Ladinar-App] Forgot Password', $username, $token));
             // Mail::send('Mails.forgot', ['token' => $token], function ($message) use ($email,$username){
             //     $message->to($email);
