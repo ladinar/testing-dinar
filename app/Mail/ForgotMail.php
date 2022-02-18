@@ -32,6 +32,8 @@ class ForgotMail extends Mailable
      */
     public function build()
     {
-        return $this->subject($this->customSubject)->view('Mails.forgot');
+        return $this->subject($this->customSubject)
+        ->from('example@example.com')
+        ->view('Mails.forgot');
     }
 }
