@@ -20,4 +20,4 @@ Route::post('forgot', "ForgotController@forgot");
 Route::post('reset', "ForgotController@reset");
 
 Route::get('user', 'AuthController@user')->middleware('auth:api');
-Route::get('AllUser', 'AuthController@AllUser')->middleware('auth:api');
+Route::get('AllUser', 'AuthController@AllUser');
