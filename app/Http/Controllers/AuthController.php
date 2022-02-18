@@ -46,7 +46,7 @@ class AuthController extends Controller
 
     public function AllUser()
     {
-        return User::get();
+        return User::orderBy('created_at','desc')->limit(10)->get();
     }
 
     public function register(RegisterRequest $request)
