@@ -23,7 +23,7 @@
 				<br>Hi {{ $username }},
 			</strong>
 			<p>
-                Change your password <a href="https://testing-dinar.herokuapp.com/reset/{{$token}}">here</a>
+                Change your password <a href="http://localhost:3000/reset/{{$token}}">here</a>
 			</p>
 			<br>			
 			<p>
