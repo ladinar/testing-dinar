@@ -1,0 +1,1 @@
+selalu riang serta gembiraaa
